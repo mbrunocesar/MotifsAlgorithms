@@ -12,8 +12,8 @@ import data.motif.Motif;
 public class SubTreeGenerator {
 
 	/**
-	 * Complexity O(N) - Breaks the target Graph in smallers sub-Graph
-	 * Makes graph motif search passible to parralel processing
+	 * Complexity O(N) - Breaks the target Graph in smaller's sub-Graph
+	 * Creates the possibility of parallel processing in the graph motif search 
 	 * 
 	 * @param targetGraph
 	 * @param targetMotif
