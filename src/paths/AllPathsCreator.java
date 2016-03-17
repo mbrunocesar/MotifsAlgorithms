@@ -10,7 +10,7 @@ import data.NodeBuilder;
 
 public class AllPathsCreator extends VisitableController {
 
-	SimplePath[] allPaths;
+	SimplePath[] paths;
 	int[][] dist;
 	GenericNode[][] next;
 
@@ -21,7 +21,7 @@ public class AllPathsCreator extends VisitableController {
 	}
 
 	public void calculateDistances(NodeBuilder targetGraph, int graphSize) {
-		allPaths = new SimplePath[graphSize];
+		paths = new SimplePath[graphSize];
 
 		dist = new int[graphSize][graphSize];
 		next = new GenericNode[graphSize][graphSize];
@@ -65,7 +65,6 @@ public class AllPathsCreator extends VisitableController {
 				}
 			}
 		}
-
 	}
 
 	public List<Integer> pathBetweenTwoNodes(int initialId, int finalId) {
@@ -87,9 +86,12 @@ public class AllPathsCreator extends VisitableController {
 		return path;
 	}
 
-
 	public int[][] getDistancesMatrix() {
 		return dist; 
+	}
+
+	public int returnNumNodes() {
+		return paths.length;
 	}
 
 }

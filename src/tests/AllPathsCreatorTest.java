@@ -10,11 +10,11 @@ import paths.AllPathsCreator;
 
 public class AllPathsCreatorTest {
 
-	AllPathsCreator pathsCreator;
+	AllPathsCreator allPaths;
 	
 	@Before
 	public void setUp() throws Exception {
-		pathsCreator = new AllPathsCreator();
+		allPaths = new AllPathsCreator();
 	}
 	
 	
@@ -61,9 +61,9 @@ public class AllPathsCreatorTest {
 		builder.addConnections(18, 21);
 		builder.addConnections(18, 22);
 		
-		pathsCreator.calculateDistances(builder, builder.getNodeSetSize());
+		allPaths.calculateDistances(builder, builder.getNodeSetSize());
 
-		int[][] distances = pathsCreator.getDistancesMatrix();
+		int[][] distances = allPaths.getDistancesMatrix();
 		System.out.println("++++++++++++++++++++++++++++++++++");
 		for (int[] line : distances) {
 			for (int element : line) {
@@ -72,16 +72,16 @@ public class AllPathsCreatorTest {
 			System.out.println();
 		}
 		
-		pathsCreator.printVisits();
+		allPaths.printVisits();
 		
-		List<Integer> path = pathsCreator.pathBetweenTwoNodes(4, 14);
+		List<Integer> path = allPaths.pathBetweenTwoNodes(4, 14);
 		System.out.println("++++++++++++++++++++++++++++++++++");
 		for (Integer node : path) {
 			System.out.print("-> " + node + " ");
 		}
 		System.out.println();
 
-		pathsCreator.printVisits();
+		allPaths.printVisits();
 		
 	}
 
