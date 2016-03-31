@@ -1,8 +1,12 @@
 package data;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public abstract class NodeBuilder  {
 
 	protected GenericNode[] graphSet;
+	protected List<Integer> colorList = new LinkedList<Integer>();
 
 	public void addConnections(int initialNode, int finalNode) {
 		graphSet[initialNode].addConnection(graphSet[finalNode]);
@@ -24,7 +28,19 @@ public abstract class NodeBuilder  {
 	public GenericNode getStartNode() {
 		return graphSet[0];
 	}
+
+
+	public void addColor(int colorNumber) {
+		if (!colorList.contains(colorNumber)) {
+			colorList.add(colorNumber);
+		}
+	}
+	
+	public int getNumColors() {
+		return colorList.size();
+	}
  
+
 	public void printBuiltedStructure() {
 		for (GenericNode node : graphSet) {
 			System.out.println("["+node.getIndex()+" "+node.getValue()+"]");

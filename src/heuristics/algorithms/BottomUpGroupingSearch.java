@@ -13,7 +13,7 @@ import heuristics.algorithms.bases.MotifSearchScaffold;
 
 /**
  * 
- * @author root
+ * @author Me
  * NOT COMPLETE! MUST SEARCH FOR BETTER COMPLEMENTARY ALGORITHMS
  */
 public class BottomUpGroupingSearch extends MotifSearchScaffold {

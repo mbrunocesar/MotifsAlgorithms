@@ -16,8 +16,8 @@ public class MinimalCut {
 			List<Integer> listI = allPaths.pathBetweenTwoNodes(idNodeInitial, i);
 			List<Integer> listF = allPaths.pathBetweenTwoNodes(idNodeFinal, i);
 			
-			if (listI != null && !listI.contains(new Integer(idNodeFinal)) && 
-				listF != null && !listF.contains(new Integer(idNodeInitial))) {
+			if (listDoNotContains(listI, idNodeFinal) && 
+					listDoNotContains(listF, idNodeInitial)) {
 				minCut.add(new GraphNode(i, i)); 
 			}
 
@@ -31,6 +31,10 @@ public class MinimalCut {
 		}
 		
 		return result;
+	}
+	
+	private boolean listDoNotContains(List<Integer> list, int idNode) {
+		return list != null && !list.contains(new Integer(idNode));
 	}
 
 }

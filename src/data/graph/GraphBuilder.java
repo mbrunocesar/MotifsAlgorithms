@@ -6,21 +6,23 @@ public class GraphBuilder extends NodeBuilder {
 
 	boolean directedGraph;
 
-	public GraphBuilder(int[] graphColors) {
-		graphBuilderInit(graphColors);
+	public GraphBuilder(int[] colorSet) {
+		graphBuilderInit(colorSet);
 		directedGraph = false;
 	}
 
-	public GraphBuilder(int[] graphColors, boolean directed) {
-		graphBuilderInit(graphColors);
+	public GraphBuilder(int[] colorSet, boolean directed) {
+		graphBuilderInit(colorSet);
 		directedGraph = directed;
 	}
 
-	private void graphBuilderInit(int[] graphColors) {
-		graphSet = new GraphNode[graphColors.length];
+	private void graphBuilderInit(int[] colorSet) {
+		graphSet = new GraphNode[colorSet.length];
 
-		for (int i=0; i<graphColors.length; i++) {
-			graphSet[i] = new GraphNode(i, graphColors[i]);
+		for (int colorIndex = 0; colorIndex < colorSet.length; colorIndex++) {
+			int color = colorSet[colorIndex];
+			graphSet[colorIndex] = new GraphNode(colorIndex, color);
+			addColor(color);
 		}
 	}
 

@@ -4,15 +4,17 @@ import data.NodeBuilder;
 
 public class TreeBuilder extends NodeBuilder {
 
-	public TreeBuilder(int[] graphColors) {
-		graphBuilderInit(graphColors);
+	public TreeBuilder(int[] colorSet) {
+		graphBuilderInit(colorSet);
 	}
 
-	private void graphBuilderInit(int[] graphColors) {
-		graphSet = new TreeNode[graphColors.length];
+	private void graphBuilderInit(int[] colorSet) {
+		graphSet = new TreeNode[colorSet.length];
 
-		for (int i=0; i<graphColors.length; i++) {
-			graphSet[i] = new TreeNode(i, graphColors[i]);
+		for (int colorIndex = 0; colorIndex < colorSet.length; colorIndex++) {
+			int color = colorSet[colorIndex];
+			graphSet[colorIndex] = new TreeNode(colorIndex, color);
+			addColor(color);
 		}
 	}
 
