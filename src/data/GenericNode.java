@@ -9,7 +9,10 @@ public abstract class GenericNode {
 	protected int nodeValue;
 	
 	protected List<GenericNode> connections;
-	
+
+
+	public static int numNodes = 0;
+
 	public GenericNode(int newIndex, int newValue) {
 		nodeIndex = newIndex;
 		nodeValue = newValue;

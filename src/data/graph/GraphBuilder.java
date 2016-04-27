@@ -9,6 +9,8 @@ public class GraphBuilder extends NodeBuilder {
 	public GraphBuilder(int[] colorSet) {
 		graphBuilderInit(colorSet);
 		directedGraph = false;
+
+		GraphNode.numNodes = colorSet.length;
 	}
 
 	public GraphBuilder(int[] colorSet, boolean directed) {

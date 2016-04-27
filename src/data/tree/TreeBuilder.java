@@ -6,6 +6,8 @@ public class TreeBuilder extends NodeBuilder {
 
 	public TreeBuilder(int[] colorSet) {
 		graphBuilderInit(colorSet);
+
+		TreeNode.numNodes = colorSet.length;
 	}
 
 	private void graphBuilderInit(int[] colorSet) {

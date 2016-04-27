@@ -39,6 +39,10 @@ public abstract class NodeBuilder  {
 	public int getNumColors() {
 		return colorList.size();
 	}
+	
+	public List<Integer> getUsedColors() {
+		return colorList;
+	}
  
 
 	public void printBuiltedStructure() {
