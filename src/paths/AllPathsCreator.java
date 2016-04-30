@@ -85,6 +85,12 @@ public class AllPathsCreator extends VisitableController {
 
 		return path;
 	}
+	
+	public boolean isNotAdjacent(int initialId, int finalId) {
+		List<Integer> shortestPath = pathBetweenTwoNodes(initialId, finalId);
+
+		return shortestPath != null && shortestPath.size() > 2;
+	}
 
 	public int[][] getDistancesMatrix() {
 		return dist; 

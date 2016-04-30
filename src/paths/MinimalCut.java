@@ -13,9 +13,7 @@ public class MinimalCut {
 
 		System.out.println(allPaths.pathBetweenTwoNodes(idNodeInitial, idNodeFinal));
 
-		List<Integer> shortestPath = allPaths.pathBetweenTwoNodes(idNodeInitial, idNodeFinal);
-
-		if (shortestPath != null && shortestPath.size() > 2) {
+		if (allPaths.isNotAdjacent(idNodeInitial, idNodeFinal)) {
 			int numNodes = allPaths.returnNumNodes();
 
 			for (int i = 0; i < numNodes; i++) {
