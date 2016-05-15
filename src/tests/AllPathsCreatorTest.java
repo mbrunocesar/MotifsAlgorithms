@@ -1,5 +1,7 @@
 package tests;
 
+import static org.junit.Assert.*;
+
 import java.util.List;
 
 import org.junit.Before;
@@ -11,20 +13,18 @@ import paths.AllPathsCreator;
 public class AllPathsCreatorTest {
 
 	AllPathsCreator allPaths;
-	
+	TreeBuilder builder;
+
+	boolean debug = false;
+
 	@Before
 	public void setUp() throws Exception {
 		allPaths = new AllPathsCreator();
-	}
-	
-	
 
-	@Test
-	public void test() {
 		int[] nodeColors = {0, 1, 2, 3, 4, 1, 6, 7, 8, 9, 10, 11, 12, 
 				9, 1, 3, 3, 1, 1, 4, 6, 4, 5};
 
-		TreeBuilder builder = new TreeBuilder(nodeColors);
+		builder = new TreeBuilder(nodeColors);
 		builder.addConnections(0, 1);
 		builder.addConnections(0, 2);
 
@@ -43,9 +43,9 @@ public class AllPathsCreatorTest {
 
 		builder.addConnections(4, 11);
 		builder.addConnections(4, 12);
-		
+
 		builder.addConnections(7, 13);
-		
+
 		builder.addConnections(13, 14);
 
 		builder.addConnections(14, 15);
@@ -55,34 +55,67 @@ public class AllPathsCreatorTest {
 
 		builder.addConnections(16, 20);
 		builder.addConnections(16, 18);
-		
+
 		builder.addConnections(17, 19);
 
 		builder.addConnections(18, 21);
 		builder.addConnections(18, 22);
-		
+	}
+
+
+
+	@Test
+	public void test1() {
 		allPaths.calculateDistances(builder, builder.getNodeSetSize());
 
 		int[][] distances = allPaths.getDistancesMatrix();
-		System.out.println("++++++++++++++++++++++++++++++++++");
-		for (int[] line : distances) {
-			for (int element : line) {
-				System.out.print(element+" ");
+
+		if (debug) {
+			System.out.println("++++++++++++++++++++++++++++++++++");
+			for (int[] line : distances) {
+				for (int element : line) {
+					System.out.print(element+" ");
+				}
+				System.out.println();
+			}
+		}
+
+
+		for (int i = 0; i < distances.length; i++) {
+			for (int j = 0; j < distances.length; j++) {
+				if (i!=j) {
+					assertTrue(distances[i][j] > 0);
+				} else {
+					assertTrue(distances[i][i] == 0);
+				}
+
+			}
+		}
+	}
+
+	@Test
+	public void test2() {
+		allPaths.calculateDistances(builder, builder.getNodeSetSize());
+
+		if (debug) {
+			allPaths.printVisits();
+		}
+
+		List<Integer> path = allPaths.pathBetweenTwoNodes(4, 14);
+		assertEquals(8, path.size());
+
+
+		if (debug) {
+			System.out.println("++++++++++++++++++++++++++++++++++");
+			for (Integer node : path) {
+				System.out.print("-> " + node + " ");
 			}
 			System.out.println();
+			allPaths.printVisits();
 		}
-		
-		allPaths.printVisits();
-		
-		List<Integer> path = allPaths.pathBetweenTwoNodes(4, 14);
-		System.out.println("++++++++++++++++++++++++++++++++++");
-		for (Integer node : path) {
-			System.out.print("-> " + node + " ");
-		}
-		System.out.println();
 
-		allPaths.printVisits();
-		
+		assertEquals(8, path.size());
+
 	}
 
 }
